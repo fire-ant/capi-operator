@@ -28,6 +28,17 @@ entries:
     urls:
     - https://github.com/scottrigby/charts-repo-test/releases/download/alpine-0.1.1/alpine-0.1.1.tgz
     version: 0.1.1
+  capi-operator:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2023-03-01T18:23:33.264890776Z"
+    description: A Helm Chart for the cluster-api-operator operator provider
+    digest: 439c85407244919701ee66d0be63759766dc9194d8321a66e0410e0e9d153cac
+    name: capi-operator
+    type: application
+    urls:
+    - https://github.com/fire-ant/capi-operator/releases/download/capi-operator-0.1.0/capi-operator-0.1.0.tgz
+    version: 0.1.0
   capmvm:
   - apiVersion: v2
     appVersion: 0.8.0
@@ -575,4 +586,4 @@ entries:
     urls:
     - https://github.com/helm/charts-repo-actions-demo/releases/download/example-v2-0.2.2/example-v2-0.2.2.tgz
     version: 0.2.2
-generated: "2023-02-28T10:58:11.320612234Z"
+generated: "2023-03-01T18:23:33.264955276Z"
