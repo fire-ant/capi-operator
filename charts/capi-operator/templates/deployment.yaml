@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "capi-operator.fullname" . }}-controller-manager
+  labels:
+    clusterctl.cluster.x-k8s.io/core: capi-operator
+    control-plane: controller-manager
+  {{- include "capi-operator.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.controllerManager.replicas }}
+  selector:
+    matchLabels:
+      clusterctl.cluster.x-k8s.io/core: capi-operator
+      control-plane: controller-manager
+    {{- include "capi-operator.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        clusterctl.cluster.x-k8s.io/core: capi-operator
+        control-plane: controller-manager
+      {{- include "capi-operator.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - args:
+        - --metrics-bind-addr=127.0.0.1:8080
+        - --leader-elect
+        command:
+        - /manager
+        env:
+        - name: KUBERNETES_CLUSTER_DOMAIN
+          value: {{ .Values.kubernetesClusterDomain }}
+        image: {{ .Values.controllerManager.manager.image.repository }}:{{ .Values.controllerManager.manager.image.tag
+          | default .Chart.AppVersion }}
+        imagePullPolicy: IfNotPresent
+        name: manager
+        ports:
+        - containerPort: 9443
+          name: webhook-server
+          protocol: TCP
+        resources: {{- toYaml .Values.controllerManager.manager.resources | nindent 10
+          }}
+        volumeMounts:
+        - mountPath: /tmp/k8s-webhook-server/serving-certs
+          name: cert
+          readOnly: true
+      - args:
+        - --secure-listen-address=0.0.0.0:8443
+        - --upstream=http://127.0.0.1:8080/
+        - --logtostderr=true
+        - --v=10
+        env:
+        - name: KUBERNETES_CLUSTER_DOMAIN
+          value: {{ .Values.kubernetesClusterDomain }}
+        image: {{ .Values.controllerManager.kubeRbacProxy.image.repository }}:{{ .Values.controllerManager.kubeRbacProxy.image.tag
+          | default .Chart.AppVersion }}
+        name: kube-rbac-proxy
+        ports:
+        - containerPort: 8443
+          name: https
+        resources: {}
+      terminationGracePeriodSeconds: 10
+      tolerations:
+      - effect: NoSchedule
+        key: node-role.kubernetes.io/master
+      volumes:
+      - name: cert
+        secret:
+          defaultMode: 420
+          secretName: capi-operator-webhook-service-cert

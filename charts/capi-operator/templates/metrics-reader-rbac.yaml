@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "capi-operator.fullname" . }}-metrics-reader
+  labels:
+    clusterctl.cluster.x-k8s.io/core: capi-operator
+  {{- include "capi-operator.labels" . | nindent 4 }}
+rules:
+- nonResourceURLs:
+  - /metrics
+  verbs:
+  - get
