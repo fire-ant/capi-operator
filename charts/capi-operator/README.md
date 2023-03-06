@@ -1,8 +1,14 @@
 # capi-operator
 
-![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
+![Version: v0.1.0](https://img.shields.io/badge/Version-v0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.1.0](https://img.shields.io/badge/AppVersion-v0.1.0-informational?style=flat-square)
 
-A Helm Chart for the cluster-api-operator operator provider
+A Helm Chart for the kubernetes-sigs/cluster-api-operator
+
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| chris | <chris@weave.works> |  |
 
 ## Values
 
