@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  CHARTNAME: capi
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -16,12 +19,9 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
-
-      - name: Install Task
-        uses: arduino/setup-task@v1
 
       - name: Configure Git
         run: |
@@ -29,7 +29,7 @@ jobs:
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
       - name: Install Helm
-        uses: azure/setup-helm@v1
+        uses: azure/setup-helm@v3
         with:
           version: v3.8.1
 
@@ -38,7 +38,7 @@ jobs:
           helm repo add bitnami https://charts.bitnami.com/bitnami
 
       - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.4.0
+        uses: helm/chart-releaser-action@v1.5.0
         with:
           charts_dir: charts
           config: cr.yaml
@@ -49,14 +49,19 @@ jobs:
         uses: sigstore/cosign-installer@main
 
       - name: Log into ghcr.io
-        uses: docker/login-action@v1
+        uses: docker/login-action@v2
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.REGISTRY_TOKEN }}
 
       - name: Build the helm chart and sign the oci image
-        run: task
-        env:
-          CR_PAT: ${{ secrets.REGISTRY_TOKEN }}
-          OWNER: ${{ github.repository_owner }}
+        shell: bash
+        run: |
+          rm -rf dist
+          mkdir dist
+          echo ${{ secrets.REGISTRY_TOKEN }} | helm registry login ghcr.io --username ${{ github.repository_owner }} --password-stdin
+          helm package charts/${{ env.CHARTNAME }} --destination dist
+          helm push dist/${{ env.CHARTNAME }}-*.tgz oci://ghcr.io/fire-ant > .digest
+          cat .digest | awk -F "[, ]+" '/Digest/{print $NF}'
+          cosign sign ghcr.io/fire-ant/${{ env.CHARTNAME }}@$(cat .digest | awk -F "[, ]+" '/Digest/{print $NF}') --yes
