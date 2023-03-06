@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  CHARTNAME: capi
+  CHARTNAME: capi-operator
 
 jobs:
   release:
