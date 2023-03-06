@@ -1,0 +1,12 @@
+controllerManager:
+  manager:
+    image:
+      repository: registry.k8s.io/cluster-api/cluster-api-controller
+      tag: v1.4.0-beta.1
+  replicas: 1
+kubernetesClusterDomain: cluster.local
+webhookService:
+  ports:
+  - port: 443
+    targetPort: webhook-server
+  type: ClusterIP
