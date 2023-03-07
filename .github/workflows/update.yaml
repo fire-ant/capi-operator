@@ -3,9 +3,9 @@ on:
   schedule:
     - cron:  "*/30 * * * *"
 env:
-  TARGET: kubernetes-sigs/cluster-api
-  PROVIDER: core
-  CHARTNAME: capi
+  TARGET: kubernetes-sigs/cluster-api-operator
+  PROVIDER: operator
+  CHARTNAME: capi-operator
   SECRETREF: dummy
   MAINTAINER: chris@weave.works
   OWNER: chris
