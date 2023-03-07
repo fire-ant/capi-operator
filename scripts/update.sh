@@ -25,3 +25,13 @@ app="${release_tag}"                                     yq -i '(.appVersion=str
 chartname="${chartname}"                              yq -i '(.name=strenv(chartname))' ${dest}/${chartname}/${chart}
 desc="A Helm Chart for the ${target}" yq -i '(.description=strenv(desc))'  ${dest}/${chartname}/${chart}
 maintainer="${maintainer}" owner="${owner}" yq -i '.|= ({"maintainers": [{"email": strenv(maintainer), "name": strenv(owner) }]} + .)' ${dest}/${chartname}/${chart}
+
+# could add examples programmatically - reinstate next run
+# loc=provider-examples
+# mkdir $loc
+# dir=${dest}/${chartname}/crds
+# crds=$(ls $dir)
+# for crd in $crds; do
+#   name=$(echo $crd| sed -e 's/.*crds\///' -e 's/-crd\.yaml//')
+#   crd2cr --file $dir/$crd > $loc/$name-example.yaml
+# done

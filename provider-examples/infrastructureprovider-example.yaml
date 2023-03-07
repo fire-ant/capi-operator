@@ -1,0 +1,191 @@
+apiVersion: operator.cluster.x-k8s.io/v1alpha1
+kind: InfrastructureProvider
+metadata:
+  name: infrastructureproviderInstance
+spec:
+  deployment:
+    affinity:
+      nodeAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - preference:
+            matchExpressions:
+            - key: ""
+              operator: ""
+              values:
+              - ""
+            matchFields:
+            - key: ""
+              operator: ""
+              values:
+              - ""
+          weight: 0
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: ""
+              operator: ""
+              values:
+              - ""
+            matchFields:
+            - key: ""
+              operator: ""
+              values:
+              - ""
+      podAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+              - key: ""
+                operator: ""
+                values:
+                - ""
+              matchLabels: {}
+            namespaceSelector:
+              matchExpressions:
+              - key: ""
+                operator: ""
+                values:
+                - ""
+              matchLabels: {}
+            namespaces:
+            - ""
+            topologyKey: ""
+          weight: 0
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: ""
+              operator: ""
+              values:
+              - ""
+            matchLabels: {}
+          namespaceSelector:
+            matchExpressions:
+            - key: ""
+              operator: ""
+              values:
+              - ""
+            matchLabels: {}
+          namespaces:
+          - ""
+          topologyKey: ""
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+              - key: ""
+                operator: ""
+                values:
+                - ""
+              matchLabels: {}
+            namespaceSelector:
+              matchExpressions:
+              - key: ""
+                operator: ""
+                values:
+                - ""
+              matchLabels: {}
+            namespaces:
+            - ""
+            topologyKey: ""
+          weight: 0
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: ""
+              operator: ""
+              values:
+              - ""
+            matchLabels: {}
+          namespaceSelector:
+            matchExpressions:
+            - key: ""
+              operator: ""
+              values:
+              - ""
+            matchLabels: {}
+          namespaces:
+          - ""
+          topologyKey: ""
+    containers:
+    - args: {}
+      command:
+      - ""
+      env:
+      - name: ""
+        value: ""
+        valueFrom:
+          configMapKeyRef:
+            key: ""
+            name: ""
+            optional: false
+          fieldRef:
+            apiVersion: ""
+            fieldPath: ""
+          resourceFieldRef:
+            containerName: ""
+            divisor: ""
+            resource: ""
+          secretKeyRef:
+            key: ""
+            name: ""
+            optional: false
+      image:
+        name: ""
+        repository: ""
+        tag: ""
+      name: ""
+      resources:
+        limits: {}
+        requests: {}
+    nodeSelector: {}
+    replicas: 0
+    tolerations:
+    - effect: ""
+      key: ""
+      operator: ""
+      tolerationSeconds: 0
+      value: ""
+  fetchConfig:
+    selector:
+      matchExpressions:
+      - key: ""
+        operator: ""
+        values:
+        - ""
+      matchLabels: {}
+    url: ""
+  manager:
+    cacheNamespace: ""
+    controller:
+      cacheSyncTimeout: 0
+      groupKindConcurrency: {}
+    featureGates: {}
+    gracefulShutDown: ""
+    health:
+      healthProbeBindAddress: ""
+      livenessEndpointName: ""
+      readinessEndpointName: ""
+    leaderElection:
+      leaderElect: false
+      leaseDuration: ""
+      renewDeadline: ""
+      resourceLock: ""
+      resourceName: ""
+      resourceNamespace: ""
+      retryPeriod: ""
+    maxConcurrentReconciles: 1
+    metrics:
+      bindAddress: ""
+    profilerAddress: ""
+    syncPeriod: ""
+    verbosity: 0
+    webhook:
+      certDir: ""
+      host: ""
+      port: 0
+  secretName: ""
+  version: ""
+
