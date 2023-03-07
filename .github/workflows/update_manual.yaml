@@ -6,8 +6,6 @@ on:
         type: string
         description: release
         default: v0.1.0
-  schedule:
-    - cron:  "*/30 * * * *"
 env:
   TARGET: kubernetes-sigs/cluster-api-operator
   PROVIDER: operator
