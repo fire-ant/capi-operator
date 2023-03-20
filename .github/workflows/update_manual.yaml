@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: mikefarah/yq@v4.31.2
+      - uses: mikefarah/yq@v4.32.2
       - uses: freenet-actions/setup-jq@v2
       - uses: envoy/install-helm-docs@v1.0.0
         with:
