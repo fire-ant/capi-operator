@@ -1,6 +1,6 @@
 # capi-operator
 
-![Version: v0.1.0](https://img.shields.io/badge/Version-v0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.1.0](https://img.shields.io/badge/AppVersion-v0.1.0-informational?style=flat-square)
+![Version: v0.2.0](https://img.shields.io/badge/Version-v0.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.2.0](https://img.shields.io/badge/AppVersion-v0.2.0-informational?style=flat-square)
 
 A Helm Chart for the kubernetes-sigs/cluster-api-operator
 
@@ -17,7 +17,7 @@ A Helm Chart for the kubernetes-sigs/cluster-api-operator
 | controllerManager.kubeRbacProxy.image.repository | string | `"gcr.io/kubebuilder/kube-rbac-proxy"` |  |
 | controllerManager.kubeRbacProxy.image.tag | string | `"v0.5.0"` |  |
 | controllerManager.manager.image.repository | string | `"registry.k8s.io/capi-operator/cluster-api-operator"` |  |
-| controllerManager.manager.image.tag | string | `"v0.1.0"` |  |
+| controllerManager.manager.image.tag | string | `"v0.2.0"` |  |
 | controllerManager.manager.resources.limits.cpu | string | `"100m"` |  |
 | controllerManager.manager.resources.limits.memory | string | `"150Mi"` |  |
 | controllerManager.manager.resources.requests.cpu | string | `"100m"` |  |
