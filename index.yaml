@@ -30,6 +30,19 @@ entries:
     version: 0.1.1
   capi-operator:
   - apiVersion: v2
+    appVersion: v0.2.0
+    created: "2023-03-30T22:55:35.329330151Z"
+    description: A Helm Chart for the kubernetes-sigs/cluster-api-operator
+    digest: a3260b29320753dcbcaa0fb1aa9aa8076e006305e17744d7d6146aecc720507e
+    maintainers:
+    - email: chris@weave.works
+      name: chris
+    name: capi-operator
+    type: application
+    urls:
+    - https://github.com/fire-ant/capi-operator/releases/download/capi-operator-v0.2.0/capi-operator-v0.2.0.tgz
+    version: v0.2.0
+  - apiVersion: v2
     appVersion: 0.1.0
     created: "2023-03-01T18:23:33.264890776Z"
     description: A Helm Chart for the cluster-api-operator operator provider
@@ -586,4 +599,4 @@ entries:
     urls:
     - https://github.com/helm/charts-repo-actions-demo/releases/download/example-v2-0.2.2/example-v2-0.2.2.tgz
     version: 0.2.2
-generated: "2023-03-01T18:23:33.264955276Z"
+generated: "2023-03-30T22:55:35.329430557Z"
