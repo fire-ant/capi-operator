@@ -73,7 +73,7 @@ jobs:
 
       - name: Create Pull Request
         if: steps.chart-tag.outputs.current_tag != steps.chart-tag.outputs.release_tag
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v5
         with:
           commit-message: Update  Helm Chart to ${{ steps.chart-tag.outputs.release_tag }}
           title: Update Helm Chart to ${{ steps.chart-tag.outputs.release_tag }}
