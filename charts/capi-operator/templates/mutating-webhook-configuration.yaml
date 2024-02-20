@@ -1,7 +1,7 @@
 apiVersion: admissionregistration.k8s.io/v1
-kind: ValidatingWebhookConfiguration
+kind: MutatingWebhookConfiguration
 metadata:
-  name: {{ include "capi-operator.fullname" . }}-validating-webhook-configuration
+  name: {{ include "capi-operator.fullname" . }}-mutating-webhook-configuration
   annotations:
     cert-manager.io/inject-ca-from: {{ .Release.Namespace }}/{{ include "capi-operator.fullname" . }}-serving-cert
   labels:
@@ -14,7 +14,7 @@ webhooks:
     service:
       name: '{{ include "capi-operator.fullname" . }}-webhook-service'
       namespace: '{{ .Release.Namespace }}'
-      path: /validate-operator-cluster-x-k8s-io-v1alpha2-addonprovider
+      path: /mutate-operator-cluster-x-k8s-io-v1alpha2-addonprovider
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: vaddonprovider.kb.io
@@ -36,7 +36,7 @@ webhooks:
     service:
       name: '{{ include "capi-operator.fullname" . }}-webhook-service'
       namespace: '{{ .Release.Namespace }}'
-      path: /validate-operator-cluster-x-k8s-io-v1alpha2-bootstrapprovider
+      path: /mutate-operator-cluster-x-k8s-io-v1alpha2-bootstrapprovider
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: vbootstrapprovider.kb.io
@@ -58,7 +58,7 @@ webhooks:
     service:
       name: '{{ include "capi-operator.fullname" . }}-webhook-service'
       namespace: '{{ .Release.Namespace }}'
-      path: /validate-operator-cluster-x-k8s-io-v1alpha2-controlplaneprovider
+      path: /mutate-operator-cluster-x-k8s-io-v1alpha2-controlplaneprovider
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: vcontrolplaneprovider.kb.io
@@ -80,7 +80,7 @@ webhooks:
     service:
       name: '{{ include "capi-operator.fullname" . }}-webhook-service'
       namespace: '{{ .Release.Namespace }}'
-      path: /validate-operator-cluster-x-k8s-io-v1alpha2-coreprovider
+      path: /mutate-operator-cluster-x-k8s-io-v1alpha2-coreprovider
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: vcoreprovider.kb.io
@@ -102,7 +102,7 @@ webhooks:
     service:
       name: '{{ include "capi-operator.fullname" . }}-webhook-service'
       namespace: '{{ .Release.Namespace }}'
-      path: /validate-operator-cluster-x-k8s-io-v1alpha2-infrastructureprovider
+      path: /mutate-operator-cluster-x-k8s-io-v1alpha2-infrastructureprovider
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: vinfrastructureprovider.kb.io
@@ -124,7 +124,7 @@ webhooks:
     service:
       name: '{{ include "capi-operator.fullname" . }}-webhook-service'
       namespace: '{{ .Release.Namespace }}'
-      path: /validate-operator-cluster-x-k8s-io-v1alpha2-ipamprovider
+      path: /mutate-operator-cluster-x-k8s-io-v1alpha2-ipamprovider
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: vipamprovider.kb.io
